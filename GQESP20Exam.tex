@@ -1,0 +1,394 @@
+%!TEX TS-program = latex
+\documentclass[12pt]{article}
+\usepackage{amssymb,latexsym,amsmath,graphics,color}
+\usepackage{tikz}
+\usepackage{inputenc}
+\usepackage{mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+%\usepackage{sfmath}
+\usepackage{amssymb,epsfig}
+\usepackage {amsmath}
+\usepackage {amsthm}
+%\usepackage {epsf}
+\usepackage {latexsym}
+%\usepackage{ulem}
+\usepackage{wasysym}
+\usepackage{tikz}
+\usepackage{xcolor}
+\renewcommand*\familydefault{\sfdefault}
+\DeclareMathOperator{\ch}{ch}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\textheight}{9in}
+
+%\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushleft}Here are a list of questions from the Spring 2020 GQE exam, as well as my worked out solutions or questions for each. Please feel free to respond with feedback or other approaches you'd take to any of these problems. I am hoping this document will serve to help others as well as to help me where I am currently stuck.\end{flushleft}
+
+\textbf{Problem 1.} Let $A \in \mathbb{C}^{n \times n}$ be a nilpotent matrix for some positive integer $m$, that is $A^{m}=0$.
+
+\vspace{.2cm}
+
+($a$) Show that every eigenvalue of $A$ is equal to 0. 
+
+\vspace{.2cm}
+
+\begin{proof}
+If we diagonalize $A$, we can find a similar diagonal matrix $D$ of the eigenvalues 
+$\lambda_{i}$ of $A$, and an invertible matrix $P$ of the corresponding eigenvectors $v_{i}$ of $A$.
+
+$$
+\begin{bmatrix}
+\lambda_{1} & & &\\
+& \lambda_{2} & & \\
+& & \ddots & \\
+& & & \lambda_{n} 
+\end{bmatrix}
+$$
+\vspace{.2cm}
+$$
+\begin{bmatrix}
+v_{1} | v_{2} | \dots | v_{n} 
+\end{bmatrix}
+$$
+
+\begin{flushleft}Then $A=P^{-1}DP$ which implies that $A^{m}=P^{-1}D^{m}P$. Suppose $A^{m}$=0. Then \end{flushleft}
+\[
+D^{m}=
+\begin{bmatrix}
+\lambda_{1}^{m} & & &\\
+& \lambda_{2}^{m} & & \\
+& & \ddots & \\
+& & & \lambda_{n}^{m} 
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & & & \\
+& 0 & & \\
+& & \ddots & \\
+& & & 0
+\end{bmatrix}
+\]
+Therefore $\lambda_{i}=0$ for all $i$ in [1,...,n]. 
+\end{proof}
+
+\vspace{.2cm}
+
+($b$) Show that if $A$ is nilpotent and diagonalizable, then $A$=0.
+
+\vspace{.2cm}
+
+\begin{proof} By ($a$), $A^{m}$=0 implies that all eigenvalues of $A$ are equal to zero. Since $A$ is diagonalizable, $A=P^{-1}DP$ for matrices $P$ and $D$ defined above. Then
+
+\begin{align*}
+A&= 
+\begin{bmatrix}
+	v_{1} | v_{2} | \dots | v_{n} 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+		0 & & & \\
+		& 0 & & \\
+		& & \ddots & \\
+		& & & 0
+\end{bmatrix}
+\begin{bmatrix}
+	v_{1} | v_{2} | \dots | v_{n} 
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+	v_{1} | v_{2} | \dots | v_{n} 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+	0 \cdot v_{1} + 0 \cdot v_{2} + \dots + 0 \cdot v_{n}
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+	v_{1} | v_{2} | \dots | v_{n} 
+\end{bmatrix}
+\begin{bmatrix}
+	0
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+	0
+\end{bmatrix}.
+\end{align*}
+\end{proof}
+
+\textbf{Problem 2.} Let $A$ in $\mathbb{C}^{n \times n}$ be Hermitian ($A=A^{*}$). 
+
+\vspace{.2cm}
+
+($a$) Show $x^{*}Ax \in \mathbb{R}$ for all $x$ in $\mathbb{C}^{n \times n}$.
+
+\vspace{.2cm}
+
+\begin{proof} 
+\begin{flushleft}Consider\end{flushleft}
+\begin{align*}
+x^{*}Ax = x^{*}A^{*}x &= (Ax)^{*}x \\
+				&= x^{*}(Ax) \\
+				&= x^{*}(\lambda x) \\
+				&= \lambda (x^{*}x) \\ 
+				&= \lambda (r) ; r \in \mathbb{R}.
+\end{align*}
+
+\begin{flushleft}Therefore $x^{*}Ax \in \mathbb{R}$ since all eigenvalues of hermitian matrices are real numbers.\end{flushleft} 
+\end{proof}
+
+\textbf{Problem 3.} Let $A \in \mathbb{C}^{n \times n}$ be a subset of $\mathbb{R}^{3}$ defined by 
+\center{$W={ (x,y,z) : x-y=0, z+x=0 }$.}
+
+\vspace{.2cm}
+
+\begin{flushleft} ($a$) Show that $W$ is a subspace of $\mathbb{R}^{3}$ and find dim$W$. \end{flushleft}
+
+\vspace{.2cm}
+
+\begin{proof} 
+
+\begin{flushleft} Consider the vector 0=(0,0,0). Then 0-0=0 and 0+0=0. Therefore 0 is in $W$. \end{flushleft}
+
+\begin{flushleft} Let $a=(x_{1}, y_{1}, z_{1})$ and $b=(x_{2}, y_{2}, z_{2})$ be vectors in $W$. Then the following hold: \end{flushleft}
+
+\begin{align*}
+	& x_{1}-y_{1}=0 \\
+	& z_{1}+x_{1}=0 \\
+	& x_{2}-y_{2}=0 \\
+	&z_{2}+x_{2}=0 . \\ 
+\end{align*}
+	
+\begin{flushleft} Consider $a+b = (x_{1}+x_{2}, y_{1}+y_{2}, z_{1}+z_{2})$. Then $a+b$ is in $W$: \end{flushleft}
+
+\begin{align*}
+(x_{1}+x_{2}) - (y_{1}+y_{2}) &= x_{1} + x_{2} - y_{1} - y_{2} \\
+					    &= (x_{1}-y_{1}) + (x_{2}-y_{2}) \\
+					    &= 0+0 \\
+					    &= 0 . \\ 
+\end{align*}
+
+\begin{align*}
+(z_{1}+z_{2}) + (x_{1}+x{2}) &= z_{1} + z_{2} + x_{1} + x_{2} \\
+					   &= (z_{1}+x_{1}) + (z_{2}+x_{2}) \\
+					   &= 0+0 \\
+					   &= 0 . \\ 
+\end{align*}
+
+\begin{flushleft} Let $c \in \mathbb{R}$ and $a \in W$ defined above. Then $ca=(cx_{1}, cy_{1}, cz_{1})$ is in $W$: \end{flushleft}
+
+\begin{align*}
+	cx_{1}-cy_{1} &= c(x_{1}-y_{1}) \\
+			     &= c(0) \\
+			     &= 0 . \\  
+\end{align*}
+\begin{align*}
+	cz_{1}+cx_{1} &= c(z_{1}+x_{1}) \\
+			      &= c(0) \\
+			      &= 0 . \\ 
+\end{align*}
+
+\begin{flushleft} Therefore $W$ is a subspace of $\mathbb{R}^{3}$. By definition of $W$, we have that 
+$W=\{ (x,y,z) : (x,y,z) = x[1,1, -1]\}$. Thus $W=sp([1,1,-1])$, and [1,1,-1] is a basis for $W$. So dim$W$=1. 
+\end{flushleft}
+\end{proof}
+
+\vspace{.2cm}
+
+\begin{flushleft} 
+($b$) Find a basis for $W^{\perp}$. Find dim$W^{\perp}$. 
+
+\vspace{.2cm}
+
+By definition, $W^{\perp}=Null(W^{T})=Null(col(W^{T}))$. Consider $Col(W)=sp([1,1,-1])$. Then $Col(W^{T})$=$sp([1,1,-1])$ also. 
+
+Then $Null(W^{T})=\{[x,y,z] : [1,1,-1]x=0, x \in W\}$=$sp([-1,1,0], [1,0,1])$ when we solve this homogeneous system. Therefore $W^{\perp}=sp([-1,1,0], [1,0,1])$ and $dimW^{\perp}=2$. \end{flushleft}
+
+\vspace{.2cm}
+
+\begin{flushleft} \textbf{Problem 4.} $\mathbb{C}^{n}$ is an inner product space with $<x,y>=y^{*}x$. Prove that for all $A$ in $\mathbb{C}^{n \times n}$, the $ran(A^{*})=Null(A)^{\perp}$. \end{flushleft}
+
+\begin{flushleft} Consider the $Ran(A^{*})=\{A^{*}x : x \in \mathbb{C}^{n}\}$ and $Null(A)=\{x \in \mathbb{C}^{n} : Ax=0\}$. Thus $Null(A)^{\perp}=\{y \in \mathbb{C}^{n} : y^{*}x=0, x \in Null(A)\}$. \end{flushleft}
+
+\color{red} I am stuck from this point on. I am unsure how to relate the range of $A^{*}$ and the perpendicular complement of $Null(A)$. 
+
+\color{black} \begin{flushleft} \textbf{Problem 5.} Let $A \in \mathbb{C}^{n \times n}$ and suppose all eigenvalues of $A$ satisfy $|\lambda| < 1$. 
+
+\vspace{.2cm} 
+
+($a$) Prove $I-A$ is invertible. 
+\begin{proof} Note that $|\lambda|<1 \implies -1<\lambda<1$. Suppose $I-A$ is not invertible. Then $det(I-A)=0$. But this is true when $\lambda =1$. But by our assumption, $\lambda$ cannot equal 1. Thus we have a contradiction. Therefore, $det(I-A) \neq 0$ which implies that $I-A$ is invertible. \end{proof}\end{flushleft}
+
+\color{red} I am unsure if this was a good approach to take to this problem. I approached this proof using contradiction. Please feel free to reply with other approaches you may have or would take to this problem.
+
+\vspace{.2cm}
+
+\color{black}\begin{flushleft} ($b$) Prove that if $A$ is diagonalizable, then $\lim_{k \to \infty} A^{k}=0$. 
+
+\vspace{.2cm}
+
+\begin{proof} $A$ is diagonalizable implies that $A=P^{-1}DP$ for $P$ consisting of the eigenvectors of $A$ and $D$ the diagonal matrix of corresponding eigenvalues. Then by properties of diagonalizable matrices, $A^{k}=P^{-1}D^{k}P$. So
+
+\begin{align*}
+ \lim_{k \to \infty} A^{k}  &= \lim_{k \to \infty} [P^{-1}D^{k}P] \\
+				  &=[ \lim_{k \to \infty} P^{-1} ] \cdot [ \lim_{k \to \infty} D^{k} ] \cdot [ \lim_{k \to \infty} P ] \\
+				  &=P^{-1} \cdot [ \lim_{k \to \infty} D^{k} ] \cdot P \\
+				  &=P^{-1} \cdot [ \lim_{k \to \infty} \lambda_{i}^{k} ] \cdot P \\
+\end{align*}
+
+\end{proof}
+\end{flushleft}
+ 
+\color{red} I am unsure how to move on from here. Do I use $|\lambda| < 1$ somehow to show this limit is equal to zero? I'd appreciate any feedback/suggestions from here. 
+
+\vspace{.2cm}
+
+\color{black}
+
+\begin{flushleft}\textbf{Problem 6.} Let $a_{i}$, $b_{i}$ be in $\mathbb{R}$. Prove that 
+
+\vspace{.2cm}
+
+\center{$\big(\sum_{i=1}^{n} (a_{i}+b_{i})^{2}\big)^{1/2}   \leq  \big(\sum_{i=1}^{n} a_{i}^{2} \big)^{1/2} + \big(\sum_{i=1}^{n} b_{i}^{2}\big)^{1/2}.$}
+
+\vspace{.2cm}
+
+\begin{proof}
+\begin{align*}
+\big(\sum_{i=1}^{n} (a_{i}+b_{i})^{2}\big)^{1/2} 
+	&= \big( (a_{1}+b_{1})^{2} + (a_{2}+b_{2})^{2}+...+(a_{n}+b_{n})^{2}\big)^{1/2} \\
+	&= \big( (a_{1}^{2}+2a_{1}b_{1}+b_{1}^{2}) + (a_{2}^{2}+2a_{2}b_{2}+b_{2}^{2})+...\\
+	&+ (a_{n}^{2}+2a_{n}b_{n}+b_{n}^{2}) \big)^{1/2} \\
+	&= \big( (a_{1}^{2}+a_{2}^{2}+...+a_{n}^{2}) + (2a_{1}b_{1}+2a_{2}b_{2}+...+2a_{n}b_{n}) \\ &+ (b_{1}^{2}+b_{2}^{2}+...+b_{n}^{2}) \big)^{1/2} \\
+	&= \big( \sum_{i=1}^{n} a_{i}^{2} + 2\sum_{i=1}^{n} a_{i}b_{i} + \sum_{i=1}^{n} b_{i}^{2} \big)^{1/2} \\
+\end{align*}
+\end{proof}
+\color{red} From this point on, I am unsure how to continue this proof. I'd love any suggestions or approaches!
+
+
+\vspace{.2cm} 
+
+\color{black}
+
+\textbf{Problem 7.} Let $f(x)=[\frac{1}{x}]$  $\int_{0}^{x} e^{-t^{2}}, dt$, $x$>0. Prove that $f(x)$ is decreasing on $(0, \infty)$. 
+
+\vspace{.2cm}
+
+\begin{proof} 
+We show that $f'_{x}<0$ on $(0, \infty)$. Let $F(x)= \int_{0}^{x} e^{-t^{2}}, dt$. Since $e^{-t^{2}}$ is continuous on $(0, \infty)$, by the Fundamental Theorem of Calculus $F'(x)=e^{-x^{2}}$. Now consider:
+
+\begin{align*}
+f'_{x} &= [\frac{-1}{x^{2}}]F(x) + F'(x)[\frac{1}{x}] \\
+	&= [\frac{-1}{x^{2}}]F(x) + e^{-x^{2}}[\frac{1}{x}] \\
+	&= [\frac{-F(x)}{x^{2}}] + [\frac{1}{xe^{x^{2}}}]. \\
+\end{align*}
+
+Note $e^{-t^{2}}$ on $(0, \infty)$ has positive area $F(x)$ for all x on this interval. Thus $F(x)>0$ on $(0, \infty)$. Then $[\frac{-F(x)}{x^{2}}]<0$ for all $x$ on this interval. We also have $[\frac{-F(x)}{x^{2}}] + [\frac{1}{xe^{x^{2}}}] < 0$ if and only if $[\frac{F(x)}{x^{2}}]$ > $[\frac{1}{xe^{x^{2}}}]$.
+
+\end{proof}
+
+\color{red} How can I show that $[\frac{F(x)}{x^{2}}]$ > $[\frac{1}{xe^{x^{2}}}]$? Are there any other ways you'd approach this proof? 
+
+\vspace{.2cm}
+
+
+\color{black}
+
+\textbf{Problem 8.} $(X,d)$ is a metric space. $f: X \rightarrow X$ is continuous. Prove $g: X \rightarrow \mathbb{R}$ by $g(x)=d(x, f(x))$ is continuous. 
+
+\begin{proof} 
+
+$f$ is continuous implies $\forall \epsilon > 0 \exists \delta > 0$ such that $d(x,a)<\delta$ $\implies$ $d\big( f(x), f(a) \big) < \epsilon$ for all $x, a \in X$. Suppose $|x-a|<\delta$. We show $d(g(x),g(a))<\epsilon$. 
+
+Consider 
+\begin{align*} 
+d\big(g(x),g(a)\big) &= |g(x)-g(a)| \\
+			      &= \big| |x-f(x)| - |a-f(a)| \big| \\
+			      &\leq |x-f(x)|+|a-f(a)| \\
+			      &= |x-a+a-f(a)+f(a)-f(x)| + |a-x+x-f(x)+f(x)-f(a)| \\
+			      &\leq |x-a| + |f(a)-a| + |f(x)-f(a)| + |x-a| + |f(x)-x| + |f(x)-f(a)| \\
+			      &= 2|x-a| + 2|f(x)-f(a)| + g(a) + g(x) \\
+			      &< 2\delta + 2\epsilon + g(a) + g(x) \\
+\end{align*}
+\end{proof}
+
+\color{red} From this point on, I am unsure how to get rid of the $g(a) + g(x)$ in the next line of this proof. I'd appreciate any help/suggestions. Thank you!
+
+\vspace{.2cm}
+
+\color{black}
+\end{flushleft}
+
+\begin{flushleft}
+
+\textbf{Problem 9.} Let $a_{n}= \int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx$ for all $n \in \mathbb{N}$. Prove that $\lim_{n \to \infty} a_{n}$ exists. 
+
+\vspace{.2cm}
+
+\begin{proof}
+
+$\int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx$=$\int_{1}{n} [\frac{1}{x^{1/2}}] \cdot \sin(x) dx$. Let $u=x^{-1/2}$ and $dv=\sin(x)dx$. 
+
+\vspace{.1cm}
+
+Then $du=\frac{-1}{2x^{3/2}}dx$ and $v=-cos(x)$. So 
+\begin{align*}
+\int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx &= \frac{-cos(x)}{x^{1/2}} - \int_{1}^{n} \frac{cos(x)}{2x^{3/2}} dx \\
+							  &= \frac{-cos(x)}{x^{1/2}} - \frac{1}{2} \int_{1}^{n} [\frac{1}{x^{3/2}}] \cdot cos(x) dx. \\
+\end{align*}
+
+Let $u=x^{-3/2}$ and $dv=cos(x)dx$. Then $du=\frac{-3}{2x^{5/2}}dx$ and $v=\sin(x)$. So
+\begin{align*}
+\int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx &= \frac{-cos(x)}{x^{1/2}} - \frac{1}{2}[x^{-3/2}\sin(x)-\int_{1}^{n} \frac{-3\sin(x)}{2x^{5/2}} du] \\
+						      &= \frac{-cos(x)}{x^{1/2}} - \frac{\sin(x)}{2x^{3/2}} -\frac{3}{4x^{2}} \int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx.\\
+\end{align*}
+
+So $\int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx$ = $\frac{-cos(x)}{x^{1/2}}$ - $\frac{\sin(x)}{2x^{3/2}}$ -$\frac{3}{4x^{2}} \int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx$. Then 
+$\big(1+\frac{2}{4x^{2}}\big) \int_{1}^{n} \frac{\sin(x)}{x^{1/2}} dx$=$\frac{-cos(x)}{x^{1/2}}$-$\frac{\sin(x)}{2x^{3/2}}$.
+
+\vspace{.1cm}
+
+Now we can write
+\begin{align*}
+\int_{1}^{n} \frac{\sin(x)}{x^{1/2}}dx 
+	&=\big( \frac{-cos(x)}{x^{1/2}} - \frac{\sin(x)}{2x^{3/2}}\big) \big( \frac{1}{1+\frac{3}{4x^{2}}} \big) \\
+	&= \big( \frac{-cos(x)}{x^{1/2}} - \frac{\sin(x)}{2x^{3/2}} \big) \big( \frac{4x^{2}}{4x^{2}+3} \big) \\
+	&= \big( \frac{-2xcos(x)-\sin(x)}{2x^{3/2}} \big) \big( \frac{4x^{2}}{4x^{2}+3} \big) \\
+	&= \frac{-8x^{3}cos(x)-4x^{2}\sin(x)}{8x^{7/2}+6x^{3/2}} \\
+	&= \frac{-4x^{2}cos(x) - 2x\sin(x)}{4x^{5/2}+3x^{1/2}}.\\
+\end{align*}
+
+Therefore \begin{align*}
+\lim_{n \to \infty} a_{n} &= \lim_{n \to \infty} \int_{1}^{n} \frac{\sin(x)}{x^{1/2}}dx \\
+				  &= \lim_{n \to \infty} \big( \frac{-4x^{2}cos(x)-2x\sin(x)}{4x^{5/2}+3x^{1/2}} \big) \\
+				  &=\frac{-4x^{2}cos(x)-2x\sin(x)}{4x^{5/2}+3x^{1/2}}. \\
+\end{align*}
+
+Thus $\lim_{n \to \infty} a_{n}$ exists. 	    
+\end{proof}
+
+\vspace{.2cm}
+
+\textbf{Problem 10.} Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be continuous such that $f(x)\geq 0$ for all $x \in \mathbb{R}$. Let $g(x):= \sum_{n=1}^{\infty} f(x+n)$. Suppose
+$\int_{-\infty}^{\infty} g(x)dx< \infty$. Prove $f \equiv 0$. 
+
+\vspace{.2cm}
+
+\begin{proof}
+
+We know that $\int_{\infty}^{\infty} \big( f(x+1)+f(x+2)+...\big)dx$ is finite. This must mean that the series $\sum_{n=1}^{\infty} f(x+n)$ converges to a finite number.
+
+\end{proof}
+
+\color{red} From here on, I am unsure how to show that $f$ is equivalent to the zero function. Please offer any suggestions or approaches you may have. Thank you for taking the time to read and respond to this document!
+
+\end{flushleft}
+
+\end{document}
